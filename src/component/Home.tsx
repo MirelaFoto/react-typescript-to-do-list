@@ -1,25 +1,37 @@
 import { Heading } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AddTodo from './AddTodo'
 import EditTodo from './EditTodo'
-import { dummyData, ITodo, TodoEnum } from './Todo.types'
+import {  ITodo, TodoEnum } from './Todo.types'
 import TodoList from './TodoList'
 
 
 
 const Home = () => {
-const [todoList, setTodoList]= useState(dummyData as ITodo[])
+const [todoList, setTodoList]= useState([] as ITodo[])
 const [showAddPage, setShowAddPage]= useState(TodoEnum.list)
 const [editTodoData,setEditTodoData]=useState({} as ITodo)
 
+useEffect(() => {
+    const listOfTodos = window.localStorage.getItem("TodoList");
+    if (listOfTodos) {
+      setToLocalStorageTodoList(JSON.parse(listOfTodos));
+    }
+  }, []);
+  
+const setToLocalStorageTodoList = (list: ITodo[]) => {
+    setTodoList(list);
+    window.localStorage.setItem("TodoList", JSON.stringify(list));
+  };
 const onAddTodo = ()=>{
     setShowAddPage(TodoEnum.add)
+   
 }
 const showListHandler=()=>{
     setShowAddPage(TodoEnum.list)
 }
 const addTodoHandler=(data:ITodo)=>{
-    setTodoList([...todoList,data])
+    setToLocalStorageTodoList([...todoList, data]);
 
 
 }
@@ -27,7 +39,7 @@ const deleteTodo =(data:ITodo)=>{
     const indexTodo=todoList.indexOf(data);
     const newList=[...todoList]
     newList.splice(indexTodo,1)
-    setTodoList(newList)
+    setToLocalStorageTodoList(newList)
 }
 
 const editTodo =(data:ITodo)=>{
@@ -40,6 +52,7 @@ const updateData=(data:ITodo)=>{
     const indexOfRecord =todoList.indexOf(filteredData);
     const newData = [...todoList];
     newData[indexOfRecord] = data;
+    setToLocalStorageTodoList(newData);
 }
     return <> 
     <Heading as='h2' textAlign="center" textColor='green'> React-Typescript Todo List </Heading>
