@@ -20,13 +20,19 @@ const addTodoHandler=(data:ITodo)=>{
 
 
 }
+const deleteTodo =(data:ITodo)=>{
+    const indexTodo=todoList.indexOf(data);
+    const newList=[...todoList]
+    newList.splice(indexTodo,1)
+    setTodoList(newList)
+}
 
     return <> 
     <Heading as='h2' textAlign="center" textColor='green'> React-Typescript Todo List </Heading>
    
     {showAddPage === TodoEnum.list &&  (<> 
      <input type="button" value="Add todo" onClick={onAddTodo}/>
-    <TodoList list={todoList} />
+    <TodoList list={todoList} onDeleteHandler={deleteTodo} />
     </>)}
     {showAddPage === TodoEnum.add && <AddTodo onBackButton={showListHandler} onSubmitHandler={addTodoHandler} />}
 
