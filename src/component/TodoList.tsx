@@ -1,4 +1,5 @@
 import { ITodo } from "./Todo.types";
+import { Button,Stack ,Box,Text} from '@chakra-ui/react'
 
   type Props = {
 list: ITodo[];
@@ -13,9 +14,14 @@ onEdit:(data:ITodo)=>void;
 return <>
 
 {list.map((todo,i) =>
-    <div key={i}>{todo.content} 
-    <input type="button" value="Edit" onClick={()=>onEdit(todo)}/>
-    <input type="button" value="Delete"  onClick={()=>onDeleteHandler(todo)}/></div>)}
+   <Stack direction='row' justifyContent='center'alignContent="left" key={i}>
+   <Box borderWidth="2px" borderRadius="12px" width="22em" height="40px"><Text>{todo.content}</Text> </Box>
+ 
+    <Button colorScheme='blue' width="60px" onClick={()=>onEdit(todo)}>Edit</Button>
+    <Button colorScheme='red'width="60px" onClick={()=>onDeleteHandler(todo)}>Delete </Button>
+    
+    </Stack>)
+    }
 </>
   }
   export default TodoList;
