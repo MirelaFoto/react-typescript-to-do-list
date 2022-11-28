@@ -4,7 +4,7 @@ import AddTodo from './AddTodo'
 import EditTodo from './EditTodo'
 import {  ITodo, TodoEnum } from './Todo.types'
 import TodoList from './TodoList'
-import { Button } from '@chakra-ui/react'
+import { Button ,Flex} from '@chakra-ui/react'
 
 
 const Home = () => {
@@ -58,7 +58,7 @@ const updateData=(data:ITodo)=>{
     <Heading as='h2' textAlign="center" textColor='green'> React-Typescript Todo List </Heading>
    
     {showAddPage === TodoEnum.list &&  (<> 
-     <Button mb="3rem" colorScheme="teal" type="button" width="120px"onClick={onAddTodo}>Create Todo</Button>
+    <Flex justifyContent="right"> <Button mb="3rem" colorScheme="teal" type="button" width="120px"onClick={onAddTodo} >Create Todo</Button></Flex>
     <TodoList list={todoList} onDeleteHandler={deleteTodo} onEdit={editTodo} />
     </>)}
     {showAddPage === TodoEnum.add && <AddTodo onBackButton={showListHandler} onSubmitHandler={addTodoHandler} />}

@@ -13,14 +13,15 @@ onEdit:(data:ITodo)=>void;
     const {list,onDeleteHandler,onEdit}= props;
 return <>
 
-{list.map((todo,i) =>
-   <Stack direction='row' justifyContent='center'alignContent="left" key={i}>
-   <Box borderWidth="2px" borderRadius="12px" width="22em" height="40px"><Text>{todo.content}</Text> </Box>
+{list.map((todo,i) =><>
+   <Stack mb={4} direction="row" justifyContent='center'  key={i}>
+   <Box borderWidth="2px" borderRadius="8px" width="22em" height="40px" textAlign="center">{todo.content} </Box>
  
     <Button colorScheme='blue' width="60px" onClick={()=>onEdit(todo)}>Edit</Button>
     <Button colorScheme='red'width="60px" onClick={()=>onDeleteHandler(todo)}>Delete </Button>
     
-    </Stack>)
+    </Stack></>
+    )
     }
 </>
   }
