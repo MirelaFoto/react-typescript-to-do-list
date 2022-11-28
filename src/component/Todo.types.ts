@@ -6,7 +6,12 @@ content:string;
 
 export const dummyData : ITodo[] =[{
 id: new Date().toJSON().toString(),
-content: "Create the todo list"
+content: "Dummy data-Create the todo list"
 
 
 }]
+
+export enum TodoEnum{
+    list,
+    add,
+}
