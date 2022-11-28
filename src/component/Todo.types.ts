@@ -14,4 +14,5 @@ content: "Dummy data-Create the todo list"
 export enum TodoEnum{
     list,
     add,
+    edit
 }
