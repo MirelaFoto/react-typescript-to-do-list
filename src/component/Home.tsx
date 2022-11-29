@@ -58,7 +58,7 @@ const updateData=(data:ITodo)=>{
     <Heading as='h2' textAlign="center" textColor='green'> React-Typescript Todo List </Heading>
    
     {showAddPage === TodoEnum.list &&  (<> 
-    <Flex justifyContent="right"> <Button mb="3rem" colorScheme="teal" type="button" width="120px"onClick={onAddTodo} >Create Todo</Button></Flex>
+    <Flex justifyContent="right"> <Button mb="3rem" colorScheme="teal" type="button" mr="7rem" width="120px"onClick={onAddTodo} >Create Todo</Button></Flex>
     <TodoList list={todoList} onDeleteHandler={deleteTodo} onEdit={editTodo} />
     </>)}
     {showAddPage === TodoEnum.add && <AddTodo onBackButton={showListHandler} onSubmitHandler={addTodoHandler} />}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ITodo } from "./Todo.types";
-
+import { Button, Input,VStack,Heading,Stack } from '@chakra-ui/react';
 type Props = {
 onBackButton:()=>void;
 onSubmitHandler:(data:ITodo)=>void;
@@ -27,10 +27,12 @@ onBackButton();
    }
     return <>
     <form onSubmit={onSubmitFormHandler}>
-        <label>Write your  task!</label>
-        <input type="text" value={contentTodo} onChange={contentHandler} />
-<input type="button" value="Back" onClick={onBackButton}></input>
-<input type="submit" value="Add Todo" ></input>
+        <VStack mt="3rem">
+        <Heading mb="2rem" textColor="green.700">Write your new task!</Heading>
+        <Stack direction="row">
+        <Input type="text" value={contentTodo} onChange={contentHandler} />
+<Button w="120px" onClick={onBackButton} colorScheme="yellow">Back</Button>
+<Button w="120px"colorScheme="green" type="submit">Add Todo</Button></Stack></VStack>
     </form>
     </>
 }

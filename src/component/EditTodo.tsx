@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ITodo } from "./Todo.types";
+import { Button, Input,Center } from '@chakra-ui/react';
 
 type Props ={
     data:ITodo;
@@ -27,10 +28,11 @@ const onSubmitFormHandler=(e:any)=>{
     onBackButton();
 
 }
-   return <><form onSubmit={onSubmitFormHandler}>
-   <input type="text" value={contentTodo} onChange={contentHandler} />
-<input type="button" value="Back" onClick={onBackButton}></input>
-<input type="submit" value="Confirm" ></input>
+   return <><form onSubmit={onSubmitFormHandler}><Center mt="3rem">
+   <Input type="text"  width="30%"value={contentTodo} onChange={contentHandler} />
+   
+<Button colorScheme="yellow"  ml="10px" onClick={onBackButton}>Back</Button>
+<Button colorScheme="blue" ml="10px" type="submit">Confirm</Button></Center>
 </form></> 
 }
 export default EditTodo;
