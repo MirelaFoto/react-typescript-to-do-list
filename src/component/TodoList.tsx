@@ -1,5 +1,5 @@
 import { ITodo } from "./Todo.types";
-import { Button,Stack ,Box,Text} from '@chakra-ui/react'
+import { Button,Stack ,Box} from '@chakra-ui/react'
 
   type Props = {
 list: ITodo[];
